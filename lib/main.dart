@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thechef/models/category.dart';
 import 'package:thechef/widgets/carousel.dart';
-import 'package:http/http.dart' as http;
+
 
 void main() => runApp(TheChef());
 
@@ -29,8 +28,19 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Center(child: Text('Популярні категорії', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
         ),
-        carouselContainer()
+        carouselContainer('https://the-chef.co/?get-categories'),
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(child: Text('Наші кухарі', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
+        ),
+        carouselContainer('https://the-chef.co/?get-chefs', circle: true),
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(child: Text('Радимо спробувати', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
+        ),
+        carouselContainer('https://the-chef.co/?get-services'),
       ]),
+
     );
   }
 }
