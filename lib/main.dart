@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thechef/widgets/carousel.dart';
 
-
 void main() => runApp(TheChef());
 
 class TheChef extends StatelessWidget {
@@ -26,24 +25,32 @@ class Home extends StatelessWidget {
       body: ListView(scrollDirection: Axis.vertical, children: <Widget>[
         Container(
           padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('Популярні категорії', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
+          child: Center(
+              child: Text(
+            'Популярні категорії',
+            style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
+          )),
         ),
-        carouselContainer('https://the-chef.co/?get-categories'),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-categories', circle: false, containerWidth: 180, titleAlign: Alignment.center)),
         Container(
           padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('Наші кухарі', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
+          child: Center(
+              child: Text(
+            'Наші кухарі',
+            style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
+          )),
         ),
-        carouselContainer('https://the-chef.co/?get-chefs', circle: true),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-chefs', circle: true, containerWidth: 150, titleAlign: Alignment.center)),
         Container(
           padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('Радимо спробувати', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
+          child: Center(
+              child: Text(
+            'Радимо спробувати',
+            style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
+          )),
         ),
-        carouselContainer('https://the-chef.co/?get-services'),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-services', circle: false, containerWidth: 180, titleAlign: Alignment.center)),
       ]),
-
     );
   }
 }
-
-
-

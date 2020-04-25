@@ -2,18 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:thechef/models/category.dart';
 import 'package:http/http.dart' as http;
 
-Container carouselContainer(String url, {bool circle = false}) {
+class CarouselParameters {
+  String url = '';
+  bool circle = false;
+  double containerWidth = 180.0;
+  Alignment titleAlign = Alignment.centerLeft;
+
+  CarouselParameters({this.url, this.circle, this.containerWidth, this.titleAlign});
+}
+
+Container carouselContainer(CarouselParameters parameters) {
   return Container(
-    height: 180,
+    height: parameters.containerWidth,
 //    decoration: myBoxDecoration(),
     child: FutureBuilder<List<CarouselSlide>>(
-      future: fetchResponse(http.Client(), url),
+      future: fetchResponse(http.Client(), parameters.url),
       builder: (context, snapshot) {
         if (snapshot.hasError) print(snapshot.error);
         return snapshot.hasData
             ? CarouselList(
                 slides: snapshot.data,
-                circle: circle,
+                circle: parameters.circle,
+                titleAlign: parameters.titleAlign,
               )
             : Center(child: CircularProgressIndicator());
       },
@@ -22,10 +32,11 @@ Container carouselContainer(String url, {bool circle = false}) {
 }
 
 class CarouselList extends StatelessWidget {
-  final List<CarouselSlide> slides;
-  final bool circle;
+  List<CarouselSlide> slides;
+  bool circle;
+  Alignment titleAlign = Alignment.centerLeft;
 
-  CarouselList({Key key, this.slides, this.circle}) : super(key: key);
+  CarouselList({Key key, this.slides, this.circle, this.titleAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +66,7 @@ class CarouselList extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     width: 140,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: titleAlign,
                       child: Text(
                         slides[index].title,
                         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.0),
