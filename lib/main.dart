@@ -29,30 +29,11 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Center(child: Text('Популярні категорії', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
         ),
-        Container(
-          height: 200,
-          //decoration: Decoration(BoxDecoration(border: Border())),
-          child: FutureBuilder<List<Category>>(
-            future: fetchCategories(http.Client()),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) print(snapshot.error);
-              return snapshot.hasData ? PhotosList(categories: snapshot.data) : Center(child: CircularProgressIndicator());
-            },
-          ),
-        ),
+        carouselContainer()
       ]),
     );
   }
 }
 
-/*
-/*child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: Text('Популярні категорії', style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),)),
-                    ),
-                    carousel()
-                  ],*/
- */
+
+

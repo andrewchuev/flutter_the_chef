@@ -19,12 +19,12 @@ class Category {
   }
 }
 
-Future<List<Category>> fetchCategories(http.Client client) async {
+Future<List<Category>> fetchResponse(http.Client client) async {
   final response = await client.get('https://the-chef.co/?get-categories');
-  return compute(parseCategories, response.body);
+  return compute(parseResponse, response.body);
 }
 
-List<Category> parseCategories(String responseBody) {
+List<Category> parseResponse(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
   print(parsed);
   return parsed.map<Category>((json) => Category.fromJson(json)).toList();
