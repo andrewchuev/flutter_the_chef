@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
             style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
           )),
         ),
-        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-categories', circle: false, containerWidth: 180, titleAlign: Alignment.center)),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-categories', circle: false, containerWidth: 170, titleAlign: Alignment.center, imageHeight: 120.0)),
         Container(
           padding: const EdgeInsets.all(8.0),
           child: Center(
@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
             style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
           )),
         ),
-        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-chefs', circle: true, containerWidth: 150, titleAlign: Alignment.center)),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-chefs', circle: true, containerWidth: 140, titleAlign: Alignment.center, imageHeight: 120.0)),
         Container(
           padding: const EdgeInsets.all(8.0),
           child: Center(
@@ -49,7 +49,7 @@ class Home extends StatelessWidget {
             style: TextStyle(fontSize: 22.0, fontFamily: 'Pacifico'),
           )),
         ),
-        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-services', circle: false, containerWidth: 180, titleAlign: Alignment.center)),
+        carouselContainer(CarouselParameters(url: 'https://the-chef.co/?get-services', circle: false, containerWidth: 180, titleAlign: Alignment.center, imageHeight: 130.0)),
       ]),
     );
   }

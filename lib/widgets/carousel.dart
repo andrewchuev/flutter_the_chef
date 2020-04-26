@@ -7,8 +7,9 @@ class CarouselParameters {
   bool circle = false;
   double containerWidth = 180.0;
   Alignment titleAlign = Alignment.centerLeft;
+  double imageHeight = 130.00;
 
-  CarouselParameters({this.url, this.circle, this.containerWidth, this.titleAlign});
+  CarouselParameters({this.url, this.circle, this.containerWidth, this.titleAlign, this.imageHeight});
 }
 
 Container carouselContainer(CarouselParameters parameters) {
@@ -20,10 +21,45 @@ Container carouselContainer(CarouselParameters parameters) {
       builder: (context, snapshot) {
         if (snapshot.hasError) print(snapshot.error);
         return snapshot.hasData
-            ? CarouselList(
-                slides: snapshot.data,
-                circle: parameters.circle,
-                titleAlign: parameters.titleAlign,
+            ? ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: Row(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            parameters.circle
+                                ? CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage: NetworkImage("${snapshot.data[index].image}"),
+                                  )
+                                : Image.network(
+                                    snapshot.data[index].image,
+                                    height: parameters.imageHeight,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
+                            Container(
+                              //decoration: myBoxDecoration(),
+                              padding: const EdgeInsets.all(8.0),
+                              width: 140,
+                              child: Align(
+                                alignment: parameters.titleAlign,
+                                child: Text(
+                                  snapshot.data[index].title,
+                                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.0),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
               )
             : Center(child: CircularProgressIndicator());
       },
@@ -31,6 +67,7 @@ Container carouselContainer(CarouselParameters parameters) {
   );
 }
 
+/*
 class CarouselList extends StatelessWidget {
   List<CarouselSlide> slides;
   bool circle;
@@ -82,6 +119,7 @@ class CarouselList extends StatelessWidget {
     );
   }
 }
+*/
 
 BoxDecoration myBoxDecoration() {
   return BoxDecoration(
