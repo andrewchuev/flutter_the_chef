@@ -1,4 +1,6 @@
-# TheChef Screenshots
+# TheChef
+
+Wordpress backend. RESTful API.
 
 ## Home page
 <img src="assets/screenshots/home_page.jpg" width="400">
