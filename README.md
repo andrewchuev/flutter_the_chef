@@ -1,8 +1,4 @@
-# TheChef
-
-TheChef
-
-# Screenshots
+# TheChef Screenshots
 
 ## Home page
 <img src="assets/screenshots/home_page.jpg" width="200">
