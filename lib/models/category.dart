@@ -7,14 +7,16 @@ class CarouselSlide {
   final int id;
   final String title;
   final String image;
+  final String description;
 
-  CarouselSlide({this.id, this.title, this.image});
+  CarouselSlide({this.id, this.title, this.image, this.description});
 
   factory CarouselSlide.fromJson(Map<String, dynamic> json) {
     return CarouselSlide(
       id: json['id'] as int,
       title: json['title'] as String,
       image: json['image'] as String,
+      description: json['description'] as String,
     );
   }
 }
